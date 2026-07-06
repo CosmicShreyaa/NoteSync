@@ -1,0 +1,146 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-user-1: var(--user-1);
+  --color-user-2: var(--user-2);
+  --color-user-3: var(--user-3);
+  --color-user-4: var(--user-4);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.985 0.005 90);
+  --foreground: oklch(0.18 0.02 60);
+  --surface: oklch(0.97 0.008 85);
+  --surface-elevated: oklch(1 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 60);
+  --primary: oklch(0.55 0.18 28);
+  --primary-foreground: oklch(0.99 0.01 90);
+  --secondary: oklch(0.95 0.01 85);
+  --secondary-foreground: oklch(0.25 0.02 60);
+  --muted: oklch(0.955 0.008 85);
+  --muted-foreground: oklch(0.5 0.02 70);
+  --accent: oklch(0.93 0.03 60);
+  --accent-foreground: oklch(0.25 0.03 60);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.01 80);
+  --input: oklch(0.92 0.01 80);
+  --ring: oklch(0.55 0.18 28);
+
+  --user-1: oklch(0.65 0.19 30);
+  --user-2: oklch(0.68 0.15 170);
+  --user-3: oklch(0.62 0.17 280);
+  --user-4: oklch(0.72 0.16 90);
+}
+
+.dark {
+  --background: oklch(0.16 0.01 60);
+  --foreground: oklch(0.95 0.01 85);
+  --surface: oklch(0.19 0.012 60);
+  --surface-elevated: oklch(0.22 0.014 60);
+  --card: oklch(0.21 0.013 60);
+  --card-foreground: oklch(0.95 0.01 85);
+  --popover: oklch(0.21 0.013 60);
+  --popover-foreground: oklch(0.95 0.01 85);
+  --primary: oklch(0.72 0.17 35);
+  --primary-foreground: oklch(0.16 0.01 60);
+  --secondary: oklch(0.26 0.015 60);
+  --secondary-foreground: oklch(0.95 0.01 85);
+  --muted: oklch(0.24 0.014 60);
+  --muted-foreground: oklch(0.68 0.02 70);
+  --accent: oklch(0.3 0.03 40);
+  --accent-foreground: oklch(0.95 0.01 85);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.3 0.015 60);
+  --input: oklch(0.28 0.015 60);
+  --ring: oklch(0.72 0.17 35);
+
+  --user-1: oklch(0.72 0.18 30);
+  --user-2: oklch(0.75 0.14 170);
+  --user-3: oklch(0.7 0.16 280);
+  --user-4: oklch(0.78 0.16 90);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Custom scrollbar */
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--foreground) 20%, transparent) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--foreground) 15%, transparent);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: background 0.2s ease;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--primary) 55%, transparent);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+@utility caret-user-1 { caret-color: var(--user-1); }
+@utility caret-user-2 { caret-color: var(--user-2); }
+@utility caret-user-3 { caret-color: var(--user-3); }
